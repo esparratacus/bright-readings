@@ -1,6 +1,11 @@
 class Readings::Create < ActiveInteraction::Base
   string :user
-  array :readings
+  array :readings do
+    hash do
+      date_time :timestamp
+      integer :count
+    end
+  end
 
   attr_reader :client
   def execute
